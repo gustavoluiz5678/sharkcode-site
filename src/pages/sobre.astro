@@ -1,67 +1,36 @@
-<html lang="pt-BR">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Sobre Nós | SharkCode</title>
-	</head>
-	<body>
-		<header>
-			<strong>SharkCode</strong>
-			<nav>
-				<ul>
-					<li><a href="/">Início</a></li>
-					<li><a href="/sobre">Sobre</a></li>
-					<li><a href="/equipe">Equipe</a></li>
-					<li><a href="/contato">Contato</a></li>
-				</ul>
-			</nav>
-		</header>
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import { empresa } from '../data/empresa.js';
+---
 
-		<main>
-			<section>
-				<h1>Sobre a SharkCode</h1>
-				<p>A SharkCode nasceu com a ideia de transformar tecnologia em
-soluções simples, modernas e eficientes. Inspirada na força, velocidade e inteligência do
-tubarão, a empresa busca enfrentar desafios e criar soluções digitais que façam a
-diferença, tendo como propósito inovar, desenvolver e evoluir, unindo criatividade e
-tecnologia para ajudar pessoas e empresas a crescerem no mundo digita
-.</p>
-			</section>
+<LayoutBase 
+	titulo="Sobre Nós" 
+	descricao={`Conheça a história e os valores da ${empresa.nome}.`}
+>
+	<section>
+		<h1>Sobre a {empresa.nome}</h1>
+		<p>{empresa.historia}</p>
+	</section>
 
-			<section>
-				<h2>Missão</h2>
-				<p>Criar soluções tecnológicas simples, modernas e eficientes, ajudando pessoas e empresas a
-crescer e evoluir no mundo digital.</p>
-			</section>
+	<section>
+		<h2>Missão</h2>
+		<p>{empresa.missao}</p>
+	</section>
 
-			<section>
-				<h2>Visão</h2>
-				<p>Criar soluções tecnológicas simples, modernas e eficientes, ajudando pessoas e empresas a
-crescer e evoluir no mundo digital..</p>
-			</section>
+	<section>
+		<h2>Visão</h2>
+		<p>{empresa.visao}</p>
+	</section>
 
-			<section>
-				<h2>Nossos Valores</h2>
-				<ul>
-					<li>
-						<h3>Inovação</h3>
-						<p>Buscar novas ideias e tecnologias.</p>
-					</li>
-					<li>
-						<h3>Qualidade</h3>
-						<p>Entregar soluções eficientes e confiáveis.</p>
-					</li>
-					<li>
-						<h3>Criatividade</h3>
-						<p>Transformar desafios em soluções.</p>
-					</li>
-				</ul>
-			</section>
-		</main>
-
-		<footer>
-			<p>&copy; 2026 SharkCode . Todos os direitos reservados.</p>
-		</footer>
-	</body>
-</html>
+	<section>
+		<h2>Nossos Valores</h2>
+		<ul>
+			{empresa.valores.map((valor) => (
+				<li>
+					<h3>{valor.titulo}</h3>
+					<p>{valor.descricao}</p>
+				</li>
+			))}
+		</ul>
+	</section>
+</LayoutBase>
